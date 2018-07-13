@@ -1,7 +1,7 @@
 import { SET_USER_DETAILS, SET_FOLLOWERS_DETAILS, SET_FOLLOWING_DETAILS } from '../actions/actionTypes';
 
 const initialState = {
-    userDetails: "hii"
+    userDetails: ""
 }
 
 const reducer = ( state = initialState, action ) => {

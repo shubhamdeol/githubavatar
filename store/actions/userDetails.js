@@ -15,6 +15,6 @@ export const onFetchUserInfoInit = ( userLogin ) => {
 export const setUserDetails = userDetails => {
     return {
         type: SET_USER_DETAILS,
-        userDetails: userDetails
+        userDetails: {...userDetails}
     }
 }
