@@ -1,18 +1,18 @@
 import React from 'react';
 import { ScrollView ,Text, View, TextInput, StyleSheet} from 'react-native';
-import connect from 'react-redux';
+import {connect} from 'react-redux';
 import SearchList from '../components/SearchList/SearchList';
-import axios from 'axios';
+import { onFetchSearchInit } from '../store/actions/index';
+
 
 class Search extends React.Component {
   static navigationOptions = {
     title: 'Search a GitHub User',
  };
  
-     state = {
-         search: "",
-         value: ""
-     }
+    state = {
+        value: ""
+    }
 
       //  navMovieDetails = ( movieID ) => {
       //      this.props.navigation.navigate("RouteToDetails", {
@@ -24,18 +24,18 @@ class Search extends React.Component {
            this.setState({
                value: Text
            })
-           this.callGitApi(Text);
+           this.props.fetchSearchDetails(Text);
      }
  
-     callGitApi = (Text) => {
-         axios.get("https://api.github.com/search/users?q="+Text)
-           .then( res => {
-               this.setState( {
-                   search: res.data.items,
-               })
+    //  callGitApi = (Text) => {
+    //      axios.get("https://api.github.com/search/users?q="+Text)
+    //        .then( res => {
+    //            this.setState( {
+    //                search: res.data.items,
+    //            })
              
-       })
-     }
+    //    })
+    //  }
  
      render() {
          return (
@@ -46,21 +46,28 @@ class Search extends React.Component {
                  placeholderTextColor = "#9a73ef"
                  autoCapitalize = "none"
                  placeholder="Search for GitHub Avatars"
-                 value = {this.state.value}
+                 value = {this.props.value}
                  onChangeText = {this.handleSearch}/>
-                 <SearchList listData = {this.state.search} />
+                 <SearchList listData = {this.props.search} nav = {this.props.navigation.navigate}/>
              </View>
              )
          }
      }
 
-
      const mapStateToProps = state => {
-       return {
-          // search: state.search.value    and access it with props.search in component
-       };
-     };
-     export default connect(Search);
+         return {
+            search: state.search.searchResults
+         }
+     }
+
+     const mapDispatchToProps = ( dispatch ) => {
+        return {
+            fetchSearchDetails: (Text) => dispatch(onFetchSearchInit(Text)),
+        }
+    }
+
+  
+     export default connect(mapStateToProps,mapDispatchToProps )(Search);
 
  const styles = StyleSheet.create({
      container: {

@@ -1,15 +1,15 @@
-import { HANDLE_SEARCH } from '../actions/actionTypes'
+import { SET_SEARCH_RESULTS } from '../actions/actionTypes'
 
 const initialState = {
-    users: "",
     searchResults: ""
 }
 
 const reducer = ( state = initialState , action ) => {
     switch( action.type ) {
-        case HANDLE_SEARCH:
+        case SET_SEARCH_RESULTS:
         return {
             ...state,//and override or add more properties s
+            searchResults: [...action.searchResults]
         }
         
         default:

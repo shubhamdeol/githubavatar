@@ -9,7 +9,7 @@ class SearchList extends React.Component {
                 data = {this.props.listData}
                 keyExtractor={item => item.id.toString()}
                 renderItem={({item}) => (
-                <UserList {...item} />
+                <UserList {...item} nav={this.props.nav}/>
                 )
             }  />
             </View>
