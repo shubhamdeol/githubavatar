@@ -41,6 +41,7 @@ LinksStack.navigationOptions = {
 
 const SettingsStack = createStackNavigator({
   Settings: SearchScreen,
+  UserDetails: UserDetailsScreen
 });
 
 SettingsStack.navigationOptions = {
