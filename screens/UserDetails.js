@@ -8,10 +8,15 @@ class UserDetails extends Component {
         return (
             <ScrollView>
                 <View>
-                <Image source={{uri: this.props.userDetails.avatar_url}} style={{width: 100, height: 100}} />
+                <Image source={{uri: this.props.userDetails.avatar_url}} style={{width: "100%", height: 400}} />
                     <Text>Name: {this.props.userDetails.name}</Text>
                     <Text>login id: {this.props.userDetails.login}</Text>
-                    <Text>Name: {this.props.userDetails.name}</Text>
+                    <Text>company: {this.props.userDetails.company}</Text>
+                    <Text>Email: {this.props.userDetails.email}</Text>
+                    <Text>company: {this.props.userDetails.company}</Text>
+                    <Text>Tota Followers: {this.props.userDetails.followers}</Text>
+                    <Text>Following: {this.props.userDetails.following}</Text>
+                    <Text>Location: {this.props.userDetails.location}</Text>
 
                 </View>
             </ScrollView>

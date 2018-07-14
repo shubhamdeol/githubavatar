@@ -56,7 +56,7 @@ class Search extends React.Component {
 
      const mapStateToProps = state => {
          return {
-            search: state.search.searchResults
+            search: state.users.searchResults
          }
      }
 

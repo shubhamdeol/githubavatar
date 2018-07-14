@@ -3,7 +3,7 @@ import {Avatar} from 'react-native-elements';
 import {View, Text, StyleSheet, Image, TouchableOpacity} from 'react-native';
 import MyButton from '../UI/Button/MyButton';
 import {connect} from 'react-redux'; 
-import { onFetchUserInfoInit } from '../store/actions/index';
+import { onFetchUserInfoInit,onFetchFollowersInit, onFetchFollowingsInit } from '../store/actions/index';
 class UserList extends React.Component {
     
     handleUserDetails = (login) => {
@@ -27,13 +27,12 @@ class UserList extends React.Component {
                 </Text>
                 </View>
                 <View>
-                    <MyButton color="#a550c9" onPress = {() => alert("pressed")}>Following</MyButton>
+                    <MyButton color="#a550c9" onPress = {() => this.props.getFollowingDetails(this.props.following_url)}>Following</MyButton>
                 </View>
                 <View>
-                    <MyButton color="#a550c9" onPress = {() => alert("pressed")}>Followers</MyButton>
+                    <MyButton color="#a550c9" onPress = {() => this.props.getFollowersDetails(this.props.followers_url)}>Followers</MyButton>
                 </View>
             </View>
-
 )
 }
 }
@@ -47,6 +46,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = ( dispatch ) => {
    return {
        getUserDetails: (login) => dispatch(onFetchUserInfoInit(login)),
+       getFollowingDetails: (following_url) => dispatch(onFetchFollowingsInit(following_url)),
+       getFollowersDetails: (followers) => dispatch(onFetchFollowersInit(followers))
    }
 }
 

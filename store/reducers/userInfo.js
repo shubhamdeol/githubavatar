@@ -9,8 +9,9 @@ const reducer = ( state = initialState, action ) => {
         case SET_USER_DETAILS: 
         return {
             ...state,
-            userDetails: [...action.userDetails]
+            userDetails: {...action.userDetails}
         }
+        
         default: 
         return state;
     }

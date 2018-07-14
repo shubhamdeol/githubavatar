@@ -1,10 +1,8 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
-import searchReducer from './reducers/search';
 import userReducer from './reducers/users';
 import userDetailReducer from './reducers/userInfo';
 import thunk from 'redux-thunk';
 const rootReducer = combineReducers({
-    search: searchReducer,
     users: userReducer,
     userDetails: userDetailReducer
 });
