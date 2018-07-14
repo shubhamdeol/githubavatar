@@ -6,6 +6,7 @@ import HomeScreen from '../screens/HomeScreen';
 import UsersScreen from '../screens/Users';
 import SearchScreen from '../screens/Search';
 import UserDetailsScreen from '../screens/UserDetails';
+import FollowScreen from '../screens/follow';
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
 });
@@ -26,7 +27,8 @@ HomeStack.navigationOptions = {
 
 const LinksStack = createStackNavigator({
   Links: UsersScreen,
-  UserDetails: UserDetailsScreen
+  UserDetails: UserDetailsScreen,
+  follow: FollowScreen
 });
 
 LinksStack.navigationOptions = {
@@ -41,7 +43,8 @@ LinksStack.navigationOptions = {
 
 const SettingsStack = createStackNavigator({
   Settings: SearchScreen,
-  UserDetails: UserDetailsScreen
+  UserDetails: UserDetailsScreen,
+  follow: FollowScreen
 });
 
 SettingsStack.navigationOptions = {

@@ -2,7 +2,8 @@ import { SET_ALL_USERS, SET_FOLLOWERS_DETAILS, SET_FOLLOWING_DETAILS, SET_SEARCH
 
 const initialState = {
     users: "",
-    searchResults: ""
+    searchResults: "",
+    follow: ""
 }
 
 const reducer = ( state = initialState, action ) => {
@@ -16,13 +17,13 @@ const reducer = ( state = initialState, action ) => {
         return {
             ...state,
             users: [...action.followersDetail],
-            searchResults: [...action.followersDetail]
+            follow: [...action.followersDetail]
         }
         case SET_FOLLOWING_DETAILS:
         return {
             ...state,
             users: [...action.followingsDetail],
-            searchResults: [...action.followingsDetail]
+            follow: [...action.followingsDetail]
         }
 
             case SET_SEARCH_RESULTS:

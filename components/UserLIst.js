@@ -11,6 +11,20 @@ class UserList extends React.Component {
         this.props.nav("UserDetails");
     }
 
+    getFollowing = (following_url) => {
+        this.props.getFollowingDetails(following_url)
+        this.props.nav("follow",{
+            type: "followings"
+        });
+    }
+
+    getFollowers = (followers_url) => {
+        this.props.getFollowersDetails(followers_url);
+        this.props.nav("follow",{
+            type: "followings"
+        });
+    }
+
     render(){ 
      return (  
             <View style={styles.listWrapper}>
@@ -27,10 +41,10 @@ class UserList extends React.Component {
                 </Text>
                 </View>
                 <View>
-                    <MyButton color="#a550c9" onPress = {() => this.props.getFollowingDetails(this.props.following_url)}>Following</MyButton>
+                    <MyButton color="#a550c9" onPress = {() => this.getFollowing(this.props.following_url)}>Following</MyButton>
                 </View>
                 <View>
-                    <MyButton color="#a550c9" onPress = {() => this.props.getFollowersDetails(this.props.followers_url)}>Followers</MyButton>
+                    <MyButton color="#a550c9" onPress = {() => this.getFollowers(this.props.followers_url)}>Followers</MyButton>
                 </View>
             </View>
 )
