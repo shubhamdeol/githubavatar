@@ -6,6 +6,8 @@ import {connect} from 'react-redux';
 import { onFetchUserInfoInit,onFetchFollowersInit, onFetchFollowingsInit } from '../store/actions/index';
 class UserList extends React.Component {
     
+    
+
     handleUserDetails = (login) => {
         this.props.getUserDetails(login)
         this.props.nav("UserDetails");
@@ -20,8 +22,9 @@ class UserList extends React.Component {
 
     getFollowers = (followers_url) => {
         this.props.getFollowersDetails(followers_url);
+
         this.props.nav("follow",{
-            type: "followings"
+            type: this.props.clicked
         });
     }
 
@@ -53,7 +56,8 @@ class UserList extends React.Component {
 
 const mapStateToProps = state => {
     return {
-       search: state.userDetails.userDetails
+       search: state.userDetails.userDetails,
+       clicked : state.users.clicked
     }
 }
 

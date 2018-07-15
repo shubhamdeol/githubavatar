@@ -3,18 +3,21 @@ import { ScrollView, StyleSheet, Text, FlatList } from 'react-native';
 import UserList from '../components/UserLIst';
 import { connect } from 'react-redux';
 class Follow extends React.Component {
-  static navigationOptions = {
-    title: 'follow',
- };
  
+ static navigationOptions = ({ navigation }) => {
+  return {
+    title: navigation.getParam('type', 'A Nested Details Screen'),
+  };
+};
 
 
   render() {
-    const { navigation } = this.props;
-    type = navigation.getParam('type', 'NO-ID');
+    // const { navigation } = this.props;
+    // type = navigation.getParam('type', 'NO-ID');
+    const follow = this.props.clicked == "followers" ? "followers" : "followings"
     return (
       <ScrollView style={styles.container}>
-     <Text>List of {type}</Text>     
+      <Text>List Of {follow}</Text>
      <FlatList 
                 data = {this.props.follow}
                 keyExtractor={item => item.id.toString()}
@@ -29,7 +32,8 @@ class Follow extends React.Component {
 
 const mapStateToProps = state => {
     return {
-       follow: state.users.follow
+       follow: state.users.follow,
+       clicked: state.users.clicked
     }
 }
 
